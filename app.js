@@ -1,8 +1,10 @@
 const express = require('express');
 
+
 const app = express();
 const PORT = 3000;
 
+app.set('view engine', 'ejs');
 // Nos permite procesar peticiones POST que vengan de un formulario
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -11,7 +13,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 
 // Array de fotos (base de datos actual)
-const photos = [];
+const images = [];
 
 app.get("/", (req, res)=>{
     res.send("funciona");
@@ -20,13 +22,20 @@ app.get("/", (req, res)=>{
 app.get("/new-image", (req, res)=>{
   // 1. Teneis que renderizar una vista new-image.ejs donde aparezca un formulario para que el usuario rellene los datos que pide la práctica. 
   // Yo implementaré el título y la URL
+  res.render("new-image.ejs");
 
 });
 
 // Necesitamos un endpoint donde enviar los datos del formulario. Endpoint donde enviar los datos del formulario
 app.post("/new-image", (req, res)=>{
-  // Recibir los datos del formulario y actualizar el array "photos"
-  // Para comprobar que lo has hecho bien muestra por consola el contenido del array photos después de actualizarlo
+  // Recibir los datos del formulario y actualizar el array "images"
+  // Para comprobar que lo has hecho bien muestra por consola el contenido del array images después de actualizarlo
+  images.push({
+    title: req.body.title,
+    url: req.body.url
+  });
+  console.log("Array de fotos actualizado: ", images);
+  res.send("Imagen añadida correctamente a la galería");
 });
 
 // Iniciar el servidor
