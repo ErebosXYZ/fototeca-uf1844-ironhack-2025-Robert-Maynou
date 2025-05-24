@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fototeca Robert Maynou</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-    </head>
-    <body>
-        <!-- carregar parcial navbar, el creem com a parcial per poder-lo reutilitzar -->
-         <%- include('./partials/navbar') %>
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+
+<body>
+    <!-- carregar parcial navbar, el creem com a parcial per poder-lo reutilitzar -->
+    <%- include('./partials/header') %>
         <h1>Añade una nueva imagen</h1>
         <form class="container" action="/new-image" method="post">
             <label for="title" class="form-label">Título</label>
@@ -18,11 +15,18 @@
             <label for="url">Añade un enlace</label>
             <input type="text" name="url" id="url">
             <input type="submit" value="Añade una imagen">
+            <label for="date" class="form-label">Fecha</label>
+            <input type="date" name="date" id="date">
         </form>
-        <% if (message != undefined) { %>
+        <% if (message !=undefined) { %>
             <section>
-                <p><%= message %></p>
+                <p>
+                    <%= message %>
+                </p>
             </section>
-        <% } %>
-    </body>
+            <% } %>
+                <%- include('./partials/footer') %>
+
+</body>
+
 </html>
