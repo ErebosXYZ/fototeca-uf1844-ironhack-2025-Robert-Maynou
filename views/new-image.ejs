@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Add new image</h1>
+        <!-- carregar parcial navbar, el creem com a parcial per poder-lo reutilitzar -->
+         <%- include('./partials/navbar') %>
+        <h1>Añade una nueva imagen</h1>
         <form class="container" action="/new-image" method="post">
             <label for="title" class="form-label">Título</label>
             <input type="text" name="title" id="title">
@@ -18,6 +19,10 @@
             <input type="text" name="url" id="url">
             <input type="submit" value="Añade una imagen">
         </form>
-        <script src="" async defer></script>
+        <% if (message != undefined) { %>
+            <section>
+                <p><%= message %></p>
+            </section>
+        <% } %>
     </body>
 </html>

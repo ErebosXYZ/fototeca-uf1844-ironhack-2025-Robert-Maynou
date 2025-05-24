@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+
+        <main>
+            <% if(images.length==0) { %>
+                <p>Todavía no hay imágenes en tu galería. ¡Añade una haciendo click <a href="/new-image.ejs">aquí</a>!</p>
+            <% } else{ %>
+                <p>Tu galería tiene X imágenes</p>
+            <% } %>
+                <!-- Generar tants articles com imatges hi hagi -->
+            <section class="container mt-4">
+                <% images.forEach(function (i){ %>
+                <article>
+                    <p>
+                        <%= i.title %>
+                    </p>
+                    <img src="<%= i.url %>" alt="<%= i.title %>">
+                </article> 
+                <% }) %>
+            </section>
+
+
+
+        </main>
+
+        <script src="" async defer></script>
+</body>
+
+</html>
