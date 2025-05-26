@@ -18,18 +18,16 @@
             <label for="date" class="form-label">Fecha</label>
             <input type="date" name="date" id="date">
         </form>
+
         <% if (message !=undefined) { %>
             <section>
-                <p class="<%= message.includes('⚠️') ? 'error' : 'success' %>">
+                <p class="<%= cssClass %>">
                     <%= message %>
                 </p>
             </section>
             <% } %>
-                <% } %>
-                    <%- include('./partials/footer') %>
-                        <script>
+                <%- include('./partials/footer') %>
 
-                        </script>
 </body>
 
 </html>

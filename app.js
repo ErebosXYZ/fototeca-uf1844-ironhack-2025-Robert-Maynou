@@ -48,19 +48,18 @@ app.post("/new-image", (req, res) => {
   // Comprovació: la URL ja existeix?
   const exists = images.find(image => image.url === url);
 
-  if (exists) {
-    return res.render("new-image.ejs", {
-      message: "⚠️ Esta URL ya ha sido usada antes."
-    });
-  }
-
-  // Si no existeix, afegeix-la
-  images.push({ title, url, date });
-  console.log("Array de imágenes actualizado: ", images);
-
-  res.render("new-image.ejs", {
-    message: "✅ La imagen ha sido añadida correctamente."
+ if (exists) {
+  return res.render("new-image.ejs", {
+    message: "⚠️ Aquesta URL ja ha estat utilitzada abans.",
+    cssClass: "error"
   });
+}
+
+images.push({ title, url, date });
+res.render("new-image.ejs", {
+  message: "✅ La imatge ha estat afegida correctament.",
+  cssClass: "success"
+});
 });
 
 
