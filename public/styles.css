@@ -1,0 +1,14 @@
+body {
+            background-color: #f2e1c3 !important;
+        }
+        .bg-red {
+            background-color: #c82333;
+
+        }
+        .navbar-nav .nav-link {
+            font-weight: bold;
+        }
+
+        a {
+            color: #fd7e14 !important;
+        }
