@@ -50,14 +50,14 @@ app.post("/new-image", (req, res) => {
 
  if (exists) {
   return res.render("new-image.ejs", {
-    message: "⚠️ Aquesta URL ja ha estat utilitzada abans.",
+    message: "⚠️ Esta URL ya ha sido utilizada.",
     cssClass: "error"
   });
 }
 
 images.push({ title, url, date });
 res.render("new-image.ejs", {
-  message: "✅ La imatge ha estat afegida correctament.",
+  message: "✅ La imagen ha sido añadida correctamente.",
   cssClass: "success"
 });
 });

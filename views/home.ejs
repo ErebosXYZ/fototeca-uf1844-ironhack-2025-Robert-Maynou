@@ -16,18 +16,27 @@
                     <p>Tu galería tiene X imágenes</p>
                     <% } %>
                         <!-- Generar tants articles com imatges hi hagi -->
-                        <section class="container mt-4">
-                            <% images.forEach(function (i){ %>
-                                <article>
-                                    <p>
-                                        <%= i.title %>
-                                    </p>
-                                    <img src="<%= i.url %>" alt="<%= i.title %>">
-                                    <p>
-                                        Fecha:
-                                    </p>
-                                </article>
-                                <% }) %>
+                        <section class="container py-4">
+                            <div class="row justify-content-center g-4">
+                                <% images.forEach(function (i) { %>
+                                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                        <article
+                                            class="card h-100 shadow-sm border border-danger rounded-3 text-center">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%= i.title %>
+                                                </h5>
+                                                <img src="<%= i.url %>" alt="<%= i.title %>"
+                                                    class="img-fluid rounded mb-2">
+                                                <p class="card-text text-muted mb-1">
+                                                    Fecha: <%= new Date(i.date).toLocaleDateString('es-ES', {
+                                                        day: 'numeric' , month: 'long' , year: 'numeric' }) %>
+                                                </p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <% }) %>
+                            </div>
                         </section>
 
 
@@ -35,9 +44,6 @@
         </main>
         <%- include('./partials/footer') %>
 
-            <script>
-
-            </script>
 </body>
 
 </html>

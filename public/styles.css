@@ -16,27 +16,33 @@ a {
     color: #f3cc8a !important;
 }
 
-img {
-    max-width: 300px;
-    max-height: auto;
-}
+
 
 .error {
-    color: #dc3545;
-    background-color: #ffe0e0;
+    background-color: #dc3545;
+    color: #ffe0e0;
     padding: 10px;
-    border: 1px solid #dc3545;
+    border: 1px solid #ffe0e0;
     border-radius: 5px;
     font-weight: bold;
     margin-top: 10px;
 }
 
 .success {
-    color: #28a745;
-    background-color: #e0ffe0;
+    background-color: #28a745;
+    color: #e0ffe0;
     padding: 10px;
-    border: 1px solid #28a745;
+    border: 1px solid #e0ffe0;
     border-radius: 5px;
     font-weight: bold;
     margin-top: 10px;
+}
+.card img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-title {
+    text-transform: capitalize;
 }
