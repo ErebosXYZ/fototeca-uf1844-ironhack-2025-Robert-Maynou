@@ -6,14 +6,14 @@
     <%- include('./partials/head'); %>
 </head>
 
-<body>
+<body class="bg">
     <%- include('./partials/header') %>
 
         <main>
             <% if(images.length==0) { %>
                 <p>Todavía no hay imágenes en tu galería. ¡Añade una haciendo click <a href="/new-image">aquí</a>!</p>
                 <% } else{ %>
-                    <p>Tu galería tiene X imágenes</p>
+                    <p class="text-center m-4 fs-5 fw-medium text-danger-emphasis">Tu galería tiene <%= images.length %> imágenes</p>
                     <% } %>
                         <!-- Generar tants articles com imatges hi hagi -->
                         <section class="container py-4">
@@ -21,7 +21,7 @@
                                 <% images.forEach(function (i) { %>
                                     <div class="col-12 col-sm-6 col-md-4 mb-4">
                                         <article
-                                            class="card h-100 shadow-sm border border-danger rounded-3 text-center">
+                                            class="card h-100 shadow-sm border border-light bg-red-300 rounded-5 text-center">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= i.title %>

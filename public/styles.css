@@ -1,5 +1,9 @@
 body {
-    background-color: #f2e1c3 !important;
+    background-color: #310a0e !important;
+}
+
+.bg {
+    background-image: url();
 }
 
 .bg-red {
