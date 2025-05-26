@@ -30,20 +30,39 @@ app.get("/new-image", (req, res)=>{
 });
 
 
-app.post("/new-image", (req, res)=>{
+// app.post("/new-image", (req, res)=>{
   
-  images.push({
-    title: req.body.title,
-    url: req.body.url,
-    date: req.body.date
-  });
+//   images.push({
+//     title: req.body.title,
+//     url: req.body.url,
+//     date: req.body.date
+//   });
+//   console.log("Array de imágenes actualizado: ", images);
+//   res.render("new-image.ejs", {
+//     message: "La imagen ha sido añadida correctamente"
+//   });
+// });
+app.post("/new-image", (req, res) => {
+  const { title, url, date } = req.body;
+
+  // Comprovació: la URL ja existeix?
+  const exists = images.find(image => image.url === url);
+
+  if (exists) {
+    return res.render("new-image.ejs", {
+      message: "⚠️ Esta URL ya ha sido usada antes."
+    });
+  }
+
+  // Si no existeix, afegeix-la
+  images.push({ title, url, date });
   console.log("Array de imágenes actualizado: ", images);
-  const date = images.date;
 
   res.render("new-image.ejs", {
-    message: "La imagen ha sido añadida correctamente"
+    message: "✅ La imagen ha sido añadida correctamente."
   });
 });
+
 
 app.use((req, res) => {
   res.status(404).render('404.ejs');

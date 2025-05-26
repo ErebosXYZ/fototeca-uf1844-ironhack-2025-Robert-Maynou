@@ -20,15 +20,16 @@
         </form>
         <% if (message !=undefined) { %>
             <section>
-                <p>
+                <p class="<%= message.includes('⚠️') ? 'error' : 'success' %>">
                     <%= message %>
                 </p>
             </section>
             <% } %>
-                <%- include('./partials/footer') %>
-                    <script>
-                        
-                    </script>
+                <% } %>
+                    <%- include('./partials/footer') %>
+                        <script>
+
+                        </script>
 </body>
 
 </html>
