@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(express.urlencoded({ extended: true}));
 
 app.use(express.static('public'));
 
-
+app.use(morgan('dev'));
 const images = [];
 
 app.get("/", (req, res)=>{
@@ -37,9 +38,15 @@ app.post("/new-image", (req, res)=>{
     date: req.body.date
   });
   console.log("Array de imágenes actualizado: ", images);
+  const date = images.date;
+
   res.render("new-image.ejs", {
     message: "La imagen ha sido añadida correctamente"
   });
+});
+
+app.use((req, res) => {
+  res.status(404).render('404.ejs');
 });
 
 app.listen(PORT, () => {
