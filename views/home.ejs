@@ -13,25 +13,28 @@
             <% if(images.length==0) { %>
                 <p>Todavía no hay imágenes en tu galería. ¡Añade una haciendo click <a href="/new-image">aquí</a>!</p>
                 <% } else{ %>
-                    <p class="text-center m-4 fs-5 fw-medium text-danger-emphasis">Tu galería tiene <%= images.length %> imágenes</p>
+                    <p class="text-center m-4 fs-5 fw-medium">Tu galería tiene <%= images.length %> imágenes</p>
                     <% } %>
                         <!-- Generar tants articles com imatges hi hagi -->
                         <section class="container py-4">
                             <div class="row justify-content-center g-4">
-                                <% images.forEach(function (i) { %>
+                                <% images.forEach(function (i, index) { %>
                                     <div class="col-12 col-sm-6 col-md-4 mb-4">
                                         <article
-                                            class="card h-100 shadow-sm border border-light bg-red-300 rounded-5 text-center">
+                                            class="card h-100 shadow-sm border border-light bg-dark rounded-5 text-center text-white">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= i.title %>
                                                 </h5>
                                                 <img src="<%= i.url %>" alt="<%= i.title %>"
-                                                    class="img-fluid rounded mb-2">
-                                                <p class="card-text text-muted mb-1">
-                                                    Fecha: <%= new Date(i.date).toLocaleDateString('es-ES', {
-                                                        day: 'numeric' , month: 'long' , year: 'numeric' }) %>
+                                                    class="img-fluid rounded mb-2 color-image" id="img-<%= index %>"
+                                                    crossorigin="anonymous">
+                                                <p class="card-text text-white-300 mb-1">
+                                                    Fecha:
+                                                    <%= new Date(i.date).toLocaleDateString('es-ES', { day: 'numeric' ,
+                                                        month: 'long' , year: 'numeric' }) %>
                                                 </p>
+                                                <div class="color-box" id="color-box-<%= index %>">...</div>
                                             </div>
                                         </article>
                                     </div>
@@ -43,6 +46,42 @@
 
         </main>
         <%- include('./partials/footer') %>
+
+            <script>
+                const colorThief = new ColorThief();
+
+                window.addEventListener('load', () => {
+                    const images = document.querySelectorAll('.color-image');
+
+                    images.forEach((img, index) => {
+                        // Assegura’t que la imatge estigui carregada abans d’analitzar
+                        if (img.complete) {
+                            processImage(img, index);
+                        } else {
+                            img.addEventListener('load', () => processImage(img, index));
+                        }
+                    });
+
+                    function processImage(img, index) {
+                        try {
+                            const rgb = colorThief.getColor(img);
+                            const hex = rgbToHex(...rgb);
+                            const colorBox = document.getElementById(`color-box-${index}`);
+                            colorBox.style.backgroundColor = hex;
+                            colorBox.textContent = hex;
+                        } catch (err) {
+                            console.error('No es pot obtenir el color:', err);
+                        }
+                    }
+
+                    function rgbToHex(r, g, b) {
+                        return "#" + [r, g, b].map(x =>
+                            x.toString(16).padStart(2, '0')
+                        ).join('');
+                    }
+                });
+            </script>
+
 
 </body>
 

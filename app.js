@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 
-let color = require('dominant-color');
 
 
 const app = express();
@@ -22,7 +21,8 @@ let imgUrl = images.url;
 app.get("/", (req, res) => {
   const sortedImages = images.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
   res.render("home.ejs", {
-    images: sortedImages
+    images: sortedImages,
+    useColorThief: true
   });
 });
 

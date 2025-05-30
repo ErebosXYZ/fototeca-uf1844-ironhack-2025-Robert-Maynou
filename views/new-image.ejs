@@ -8,25 +8,36 @@
 <body>
     <!-- carregar parcial navbar, el creem com a parcial per poder-lo reutilitzar -->
     <%- include('./partials/navbar') %>
-        <h1>Añade una nueva imagen</h1>
-        <form class="container" action="/new-image" method="post">
-            <label for="title" class="form-label">Título</label>
-            <input type="text" name="title" id="title">
-            <label for="url">Añade un enlace</label>
-            <input type="url" name="url" id="url">
-            <input type="submit" value="Añade una imagen">
-            <label for="date" class="form-label">Fecha</label>
-            <input type="date" name="date" id="date">
-        </form>
 
-        <% if (message !=undefined) { %>
-            <section>
-                <p class="<%= cssClass %>">
-                    <%= message %>
-                </p>
-            </section>
-            <% } %>
-                <%- include('./partials/footer') %>
+        <h1 class="text-align-center text-center mt-2">Añade una nueva imagen</h1>
+        <div class="d-flex justify-content-center vh-100">
+
+            <form class="card h-100 my-3 w-50 w-md-25 w-lg-15 d-flex flex-column p-4 border rounded shadow"
+                action="/new-image" method="post">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" name="title" id="title" class="form-control mb-3" maxlength="30" pattern="[A-Za-z0-9_ ]*" required placeholder="Máximo 30 carácteres (letras, números, _ o espacios)">
+
+                <label for="url" class="form-label">Añade un enlace</label>
+                <input type="url" name="url" id="url" class="form-control mb-3" required>
+
+                <label for="date" class="form-label">Fecha</label>
+                <input type="date" name="date" id="date" class="form-control mb-3" required>
+
+                <input type="submit" value="Añade una imagen" class="btn btn-primary">
+                <% if (message !=undefined) { %>
+                    <section>
+                        <p class="<%= cssClass %>">
+                            <%= message %>
+                        </p>
+                    </section>
+                    <% } %>
+            </form>
+
+        </div>
+
+
+
+        <%- include('./partials/footer') %>
 
 </body>
 
