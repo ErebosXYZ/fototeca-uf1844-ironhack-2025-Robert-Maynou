@@ -59,7 +59,7 @@ app.post("/new-image", (req, res) => {
 
 });
 
-'asddsqwdqwqwdqw'
+
 
 
 app.use((req, res) => {
