@@ -15,7 +15,7 @@
             <form class="card h-100 my-3 w-50 w-md-25 w-lg-15 d-flex flex-column p-4 border rounded shadow"
                 action="/new-image" method="post">
                 <label for="title" class="form-label">Título</label>
-                <input type="text" name="title" id="title" class="form-control mb-3" maxlength="30" pattern="[A-Za-z0-9_ ]*" required placeholder="Máximo 30 carácteres (letras, números, _ o espacios)">
+                <input type="text" name="title" id="title" class="form-control mb-3" maxlength="30" pattern="[A-Za-z0-9_ áéíóúÁÉÍÓÚñÑüÜ]*" required placeholder="Máximo 30 carácteres (letras, números, _ o espacios)">
 
                 <label for="url" class="form-label">Añade un enlace</label>
                 <input type="url" name="url" id="url" class="form-control mb-3" required>

@@ -1,5 +1,7 @@
-const express = require('express');
-const morgan = require('morgan');
+import fs from "fs"
+import express from "express"
+import morgan from "morgan"
+
 
 
 
@@ -14,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use(morgan('dev'));
-const images = [];
+let images = JSON.parse(fs.readFileSync("images.json", "utf-8"))
 let imgUrl = images.url;
 
 
@@ -55,7 +57,9 @@ app.post("/new-image", (req, res) => {
     message: "✅ La imagen ha sido añadida correctamente.",
     cssClass: "success"
   });
-  console.log(images.url);
+  console.log(images);
+  const imagesJson = JSON.stringify(images)
+  fs.writeFileSync('images.json', imagesJson, 'utf-8')
 
 });
 
