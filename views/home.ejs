@@ -6,7 +6,7 @@
     <%- include('./partials/head'); %>
 </head>
 
-<body class="bg">
+<body class="bg-bg-secondary-subtle">
     <%- include('./partials/navbar') %>
 
         <main>
@@ -21,7 +21,7 @@
                                 <% images.forEach(function (i, index) { %>
                                     <div class="col-12 col-sm-6 col-md-4 mb-4">
                                         <article
-                                            class="card h-100 shadow-sm border border-light bg-dark rounded-5 text-center text-white mb-2">
+                                            class="card h-100 shadow border border-light-subtle border-3  bg-dark rounded-2 text-center text-white mb-2" style="--bs-border-opacity: .5;">
                                             <div class="card-body">
                                                 <h5 class="card-title">
                                                     <%= i.title %>
